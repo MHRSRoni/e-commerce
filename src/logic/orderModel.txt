@@ -1,0 +1,26 @@
+{
+    _id : 546548484541654564,
+    customerId : 46488484894984465,
+    totalAmmount : 456565546,
+    status : "Shiping",
+    products : [
+        {
+            vendorId : 46546546548468484,
+            productIds : [49878978948998498, 41555154515415411, 14515455154145154, 45445145161541454],
+            ammount : 4055
+        },
+        {
+            vendorId : 54648484789456414,
+            productIds : [46848484656541884, 45551874894984589, 18717854848484847],
+            ammount : 45454
+        }
+    ],
+    address : {
+        PO : "sebar hat",
+        PS : "senbag",
+        DIST : "noakhali",
+        DIVI : "chitagong",
+    },
+    estimatedDelevary : 20/7/2023 20:05:45,
+    deleveryDate : 18/7/2023 12:55:44
+}

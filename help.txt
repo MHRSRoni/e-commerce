@@ -1,0 +1,30 @@
+1st ===> route "/api/v1/user/signup" with post method
+        create a account with name, email, password
+        name = minlength 3
+        password = minlength 6
+
+2nd ===> route "api/v1/user/login"   with post method
+        login with email and password
+
+3rd ===> route "api/v1/products"  with post method (protected)
+        create product
+        give access_token as bearer token in authorization header
+        name , price must
+        description optional
+        owner, createdAt self_generated
+
+4th ===> route "api/v1/products"    with get method (not protected)
+        get all product
+
+
+working endpoint ===>
+api/v1/user/signup = post
+api/v1/user/products = get
+api/v1/user/login = post
+api/v1/user/profile = get with access_token
+api/v1/user/order = post with access_token
+
+api/v1/vendor/signup = post
+api/v1/vendor/login = post
+api/v1/vendor/order = get with access_token
+api/v1/vendor/order/:status = get with access_token

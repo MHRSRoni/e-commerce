@@ -1,0 +1,8 @@
+customer model
+vendor model
+product model
+admin model
+order model
+transection model
+shiping model
+warehouse model

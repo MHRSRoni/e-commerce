@@ -1,0 +1,24 @@
+product should have these fields:
+product catagory = cosmetic, electric, electronic, food, toy....
+
+catagory : from product type ==> from User
+name : required  ==> from User
+price : required  ==> from User
+description : optional ==> from User
+quantity : required, min_10 ==> from User
+avilable : auto generate
+vendorId : auto generate
+ratting : auto generate
+
+{   
+    _id : 64565455848654646,
+    name : "racing car",
+    price : 200,
+    description : "racing car for children play",
+    catagory : "toy",
+    quantity : 40,
+    avilable : 25,
+    weight : 1kg,
+    vendorId : 4654648556484564654,
+    rating : 4.5
+}

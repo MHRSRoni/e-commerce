@@ -1,0 +1,19 @@
+{
+    _id : 415648948465465484,
+    name : "mohipal food warehouse",
+    address : {
+        roadNo : 154/44,
+        holdinNo : MD454,
+        PO : "pachgacia",
+        PS : "pachgacia",
+        DIST : "feni",
+        DIVI : "chitagong"
+    },
+    products : [
+        {
+            orderId : 5455559955887787878,
+            vendorId : 84899748482855874545,
+            productIds : [48787847874848484, 4989954495459252]
+        }
+    ]
+}

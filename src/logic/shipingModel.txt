@@ -1,0 +1,68 @@
+shiping model can be 7 types
+v2w ==> vendor to warehouse
+v2c ==> vendor to customer
+w2v ==> warehouse to vendor
+w2c ==> warehouse to customer
+w2w ==> warehouse to warehouse
+c2v ==> customer to vendor
+c2w ==> customer to warehouse
+
+{
+    _id : 465468489465146586,
+    type : "v2c"
+    products : [
+        {
+            vendorId : 456484848484545454,
+            products : [
+                {
+                    orderId : 4854848545456455
+                    missingProductIds : []
+                },
+                {
+                    orderId : 4654684848947894
+                    missingProductIds : [848446548484848, 849846848454448]
+                }
+            ]
+        },
+        {
+            vendorId : 456484848484545454,
+            products : [
+                {
+                    orderId : 4854848545456455
+                    missingProductIds : []
+                },
+                {
+                    orderId : 4654684848947894
+                    missingProductIds : [848446548484848, 849846848454448]
+                }
+            ]
+        },
+        {
+            vendorId : 456484848484545454,
+            products : [
+                {
+                    orderId : 4854848545456455
+                    missingProductIds : []
+                },
+                {
+                    orderId : 4654684848947894
+                    missingProductIds : [848446548484848, 849846848454448]
+                }
+            ]
+        },
+        {
+            vendorId : 456484848484545454,
+            products : [
+                {
+                    orderId : 4854848545456455
+                    missingProductIds : []
+                },
+                {
+                    orderId : 4654684848947894
+                    missingProductIds : [848446548484848, 849846848454448]
+                }
+            ]
+        },
+        
+    ]
+}

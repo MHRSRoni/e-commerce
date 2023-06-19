@@ -1,0 +1,18 @@
+user should have these field : 
+
+name : required
+email : required
+password : required ==> save (hashed password)
+role : default buyer 
+
+personal information vary for role
+buyer personal information ==>
+    phone number
+    address : street address
+              post office P.O 
+              police station P.S 
+              district
+              divition
+productId that have been purceshed : []
+total ammount that have been buyed
+              
