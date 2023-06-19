@@ -2,6 +2,7 @@ const { signup, login } = require("../controllers/vendorController")
 const authorize = require("../middlewares/auth")
 const { isVendor } = require("../middlewares/roleCheck")
 const validate = require("../middlewares/validator/validate")
+const roleCheck = require("../utils/roleCheck")
 const orderRouter = require("./orderRouter")
 const productRouter = require("./productRouter")
 
@@ -14,11 +15,11 @@ vendorRouter.put("/profile/:id")
 vendorRouter.delete("/profile/:id")
 
 //product
-vendorRouter.get("/products", authorize, isVendor, (req, res, next)=>{req.url = "/vendor", productRouter(req, res, next)})
+vendorRouter.use("/products", authorize, productRouter)
 
 
 //order
-vendorRouter.get("/order", authorize, isVendor, (req, res, next)=>{req.url = "/"; orderRouter.handle(req, res, next)})
-vendorRouter.get("/order/:status", authorize, isVendor, (req, res, next)=>{req.url = "/";orderRouter.handle(req, res, next)})
+vendorRouter.use("/order", authorize, orderRouter)
+
 
 module.exports = vendorRouter

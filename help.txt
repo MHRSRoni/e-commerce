@@ -24,7 +24,10 @@ api/v1/user/login = post
 api/v1/user/profile = get with access_token
 api/v1/user/order = post with access_token
 
+
 api/v1/vendor/signup = post
 api/v1/vendor/login = post
 api/v1/vendor/order = get with access_token
 api/v1/vendor/order/:status = get with access_token
+
+start with====> node index or nodemon index
