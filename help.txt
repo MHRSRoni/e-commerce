@@ -1,3 +1,4 @@
+#comment
 1st ===> route "/api/v1/user/signup" with post method
         create a account with name, email, password
         name = minlength 3
@@ -15,7 +16,7 @@
 
 4th ===> route "api/v1/products"    with get method (not protected)
         get all product
-
+-----------------------------------------------------------------
 
 working endpoint ===>
 api/v1/user/signup = post
