@@ -32,38 +32,14 @@ exports.signup = async (req, res, next) =>{
 }
 
 
-//login existing user
-exports.login = async (req, res, next) => {
-    const {email = "", password = ""} = req.body
-    if(!email){next({code : 400, msg : "fill all the field"})}
-    if(!password){next({code : 400, msg : "fill all the field"})}
-    const user = await UserModel.findOne({email})
-    if(!user){next({code : 404, msg : "user not exist"})}
-    else{
-        const passMatch = await bcrypt.compare(password, user.password)
-        if(!passMatch){next({code : 400, msg : "verification failed"})}
-        else{
-            const token = generateToken(user)
-        console.log(`====> user logged : ${user.role} ${user._id}`)
-                res.json({
-                name : user.name,
-                email : user.email,
-                access_token : token,
-                valid_for : "7d"
-            })
-        }
-    }
-}
+
+
 
 //get profile
-exports.getProfile = async (req, res, next) =>{
-    try {
-        const userId = req.user._id
-        const user = await UserModel.findById(userId,{_id : 0, name : 1, email : 1, role : 1, createdAt : 1})
-        res.json(user)
-        
-    } catch (err) {
-        next(err)   
-    }
-}
+
+
+
+
+//update profile
+
 

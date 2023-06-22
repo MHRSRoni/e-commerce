@@ -1,5 +1,4 @@
 const {Schema, model} = require("mongoose")
-const vendorRouter = require("../routers/vendorRouter")
 
 const vendorSchema = new Schema({
     name : {
@@ -31,10 +30,10 @@ const vendorSchema = new Schema({
             type : Object,
             street : String,
             holding : String,
-            PO : String,
-            PS : String,
-            DIST : String,
-            DIVI : String,
+            po : String,
+            ps : String,
+            dist : String,
+            divi : String,
         },
         bank_info : {
             type : Array,
@@ -49,10 +48,10 @@ const vendorSchema = new Schema({
                 type : Object,
                 street : String,
                 holding : String,
-                PO : String,
-                PS : String,
-                DIST : String,
-                DIVI : String,
+                po : String,
+                ps : String,
+                dist : String,
+                divi : String,
             },
         },
         role : {

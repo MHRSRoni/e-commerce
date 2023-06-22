@@ -18,7 +18,7 @@ const shop = joi.object({
 })
 
 //main schema
-const vendorValidSchema = joi.object({
+const vendorSchema = joi.object({
     name : joi.string().trim().min(6).max(32).required(),
     email: joi.string().trim().email().max(40).required(),
     password : joi.string().trim().min(8).max(128).required(),
@@ -30,4 +30,4 @@ const vendorValidSchema = joi.object({
     shop : joi.array().required().items(shop.required())
 })
 
-module.exports = vendorValidSchema
+module.exports = vendorSchema

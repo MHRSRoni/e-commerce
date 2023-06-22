@@ -25,7 +25,16 @@ const userSchema = new Schema({
         enum : ["customer"],
         default : "customer",
         required : true
-    }
+    },
+    address : {
+        type : Object,
+        street : String,
+        holding : String,
+        po : String,
+        ps : String,
+        dist : String,
+        divi : String,
+    },
 },{
     timestamps : true,
     versionKey : false,

@@ -41,4 +41,4 @@ const productValidSchema = (req, res, next) =>{
     }
 }
 
-module.exports = productValidSchema
+module.exports = productSchema
