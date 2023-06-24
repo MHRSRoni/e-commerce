@@ -1,12 +1,8 @@
 const {Schema, model, SchemaType} = require("mongoose")
 
 const otpSchema = new Schema({
-    user : {
-        type : Object,
-        userId : Schema.Types.ObjectId,
-        role : {
-            type : String,
-        },
+    userId : {
+        type : Schema.Types.ObjectId,
         required : true,
     },
     otp : {

@@ -30,6 +30,7 @@ const adminSchema = new Schema({
         PS : String,
         DIST : String,
         DIVI : String,
+        type : Object,
         required : true,
     },
     role : {

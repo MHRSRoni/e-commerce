@@ -11,6 +11,7 @@ const validate = (schemaName) =>{
     schemaName === "userSchema" ?  userSchema : 
     schemaName === "productSchema" ?  productSchema : 
     schemaName === "vendorSchema" ? vendorSchema : 
+    schemaName === "adminSchema" ? vendorSchema : 
     schemaName === "address" ? address : ""
     )
 

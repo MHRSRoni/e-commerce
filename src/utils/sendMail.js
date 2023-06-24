@@ -11,12 +11,13 @@ const sendMail = (mail) =>{
             pass : process.env.password
         }
       })
-      console.log(transporter)
     transporter.sendMail(mail,(error, info) => {
         if (error) {
           console.error('Error sending email:', error);
+          return false
         } else {
           console.log('Email sent:', info.response);
+          return true
         }})
 }
 
