@@ -5,7 +5,8 @@ const bcrypt = require("bcrypt")
 const generateToken = require("../utils/generateToken")
 const generateOtp = require("../utils/generateOtp")
 const sendMail = require("../utils/sendMail")
-const adminModel = require("../models/adminModel")
+const AdminModel = require("../models/adminModel")
+const WarehouseModel = require("../models/warehouseModel")
 require("dotenv").config()
 
 //chose model according to role
@@ -13,8 +14,39 @@ const selectModel = (role) =>{
     const chosenModel = 
         (role === "customer" ?  UserModel : 
         role === "vendor" ? VendorModel :
-        role === "admin" ? adminModel :  "")
+        role === "admin" ? AdminModel :
+        role === "warehouse" ? WarehouseModel :  "")
         return chosenModel
+}
+
+
+//sign up new user
+exports.signup = (role) =>{
+    const chosenModel = selectModel(role)
+    return async (req, res, next) =>{
+        try {
+            const {password = "", email } = req.validData
+            const existUser = await chosenModel.findOne({email})  //checking if user exist
+            if(existUser){next({code : 400, msg : "Email already exist"})}
+            else{
+                const hashedPassword = await bcrypt.hash(password, 10)  //hashing the pass
+                req.validData.password = hashedPassword
+                const user = chosenModel(req.validData)
+                await user.save()   //saving user to database
+                .then(()=>{
+                    const {_id, name, email, role, createdAt} = user
+                    console.log("====> user created : " + _id)
+                    res.json({_id,name,email,role,createdAt})
+        
+                })
+                .catch((err)=>next({code : 400, msg : err}))
+            }
+            
+        } catch (err) {
+            // next(err)
+            res.josn(err)
+        }
+    }
 }
 
 //login 
@@ -50,6 +82,7 @@ exports.changePassword = async (req, res, next) => {
     const chosenModel = selectModel(role)
     const {password, newPassword, confirmPassword} = req.body
     if(!password || !newPassword || !confirmPassword){next({code : 400, msg: "fill all the field"})}
+    if(password === newPassword ){next({code : 400, msg: "enter a new password"})}
     else{
         if(newPassword === confirmPassword){
         const user = await chosenModel.findById(_id,{_id : 0,password : 1})
@@ -78,6 +111,8 @@ exports.changeEmail = async (req, res, next) => {
     if(!newEmail || !password){next({code : 400, msg: "fill all the field"})}
     else{
         const user = await chosenModel.findById(_id,{_id : 0,password : 1})
+        if(!user){next("user not found")}
+        else{
         const match = await bcrypt.compare(password, user.password)
             if(!match){
                 next({code : 400, msg : "wrong password"})
@@ -91,6 +126,7 @@ exports.changeEmail = async (req, res, next) => {
                 }
             }
         }
+    }
 }
 
 //getProfile
@@ -98,8 +134,7 @@ exports.getProfile = async (req, res, next) =>{
     const {_id, role} = req.user
     const chosenModel = selectModel(role)
     try {
-        const userId = req.user._id
-        const user = await chosenModel.findById(userId,{_id : 0, name : 1, email : 1, role : 1, createdAt : 1})
+        const user = await chosenModel.findById(_id,{_id : 0, name : 1, email : 1, createdAt : 1})
         res.json(user)
         
     } catch (err) {
@@ -113,11 +148,11 @@ exports.deleteProfile = async (req, res, next) =>{
     const chosenModel = selectModel(role)
     try {
         const userId = req.user._id
-        const user = await chosenModel.findByIdAndDelete(userId,{_id : 0, name : 1, email : 1, role : 1, createdAt : 1})
+        const user = await chosenModel.findByIdAndDelete(userId)
         if(user){
-            res.json({msg : "deleted successfully", data : user})
+            res.json({msg : "deleted successfully", data : {name : user.name, email : user.email}})
         }
-        else{next(err)}
+        else{next("user not found")}
         
     } catch (err) {
         next(err)   

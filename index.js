@@ -28,9 +28,9 @@ app.use(express.json())
 //router
 app.use("/api/v1/user", userRouter)
 app.use("/api/v1/vendor", vendorRouter)
-// app.use("/api/v1/admin", adminRouter)
+app.use("/api/v1/admin", adminRouter)
 // app.use("/api/v1/customer-care", customerCareRouter)
-// app.use("/api/v1/wirehouse", warehouseRouter)
+app.use("/api/v1/warehouse", warehouseRouter)
 // app.use("/api/v1/shipper", shipperRouter)
 
 //not valid routes

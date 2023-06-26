@@ -1,5 +1,6 @@
 const joi = require("joi")
 const { models } = require("mongoose")
+const { name, password, phone, email } = require("./validatingSchema")
 
 const address = joi.object({
     street_no : joi.string().trim().max(30).required(),
@@ -19,15 +20,11 @@ const shop = joi.object({
 
 //main schema
 const vendorSchema = joi.object({
-    name : joi.string().trim().min(6).max(32).required(),
-    email: joi.string().trim().email().max(40).required(),
-    password : joi.string().trim().min(8).max(128).required(),
-    contact_no : joi.string().length(11).required(),
-    personal_info : joi.object({
-        address : address.required(),
-        bank_info : bank_info.required(),
-    }).required(),
-    shop : joi.array().required().items(shop.required())
+    name : name,
+    email: email,
+    password : password,
+    contact_no : phone,
+    
 })
 
 module.exports = vendorSchema

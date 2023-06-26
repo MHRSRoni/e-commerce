@@ -19,7 +19,7 @@ const warehouseSchema = new Schema({
         type : Object,
         required : true,
     }
-})
+},{timestamps :true, versionKey : false})
 
 const WarehouseModel = model("warehouse" , warehouseSchema)
 

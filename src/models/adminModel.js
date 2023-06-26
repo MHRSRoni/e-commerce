@@ -10,7 +10,7 @@ const adminSchema = new Schema({
 
     },
     phone : {
-        type : Number,
+        type : String,
         minlength : 11,
         maxlength : 11,
         required : true,
@@ -25,21 +25,21 @@ const adminSchema = new Schema({
         type : String,
         required : true,
     },
-    personalInformation : {
-        PO : String,
-        PS : String,
-        DIST : String,
-        DIVI : String,
-        type : Object,
-        required : true,
-    },
+    // personalInformation : {
+    //     PO : String,
+    //     PS : String,
+    //     DIST : String,
+    //     DIVI : String,
+    //     type : Object,
+    //     required : true,
+    // },
     role : {
         type : String,
         enum : ["admin"],
         default : "admin"
     },
-})
+},{timestamps : true, versionKey : false})
 
-const adminModel = model("admin" , adminSchema)
+const AdminModel = model("admin" , adminSchema)
 
-module.exports = adminModel
+module.exports = AdminModel

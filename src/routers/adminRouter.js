@@ -1,5 +1,4 @@
-const { changePassword, otpSend, verifyOtp, resetPassword, changeEmail, addAddress, getProfile, deleteProfile, login } = require("../controllers/commonController")
-const { signup } = require("../controllers/userController")
+const { changePassword, otpSend, verifyOtp, resetPassword, changeEmail, addAddress, getProfile, deleteProfile, login, signup } = require("../controllers/commonController")
 const authorize = require("../middlewares/auth")
 const validate = require("../middlewares/validator/validate")
 const roleCheck = require("../utils/roleCheck")
@@ -8,9 +7,8 @@ const adminRouter = require("express").Router()
 
 
 
-
-// adminRouter.post("/signup", signup)
-adminRouter.post("/signup",validate("adminSchema"), signup)   //signup
+//account
+adminRouter.post("/signup",validate("adminSchema"), signup("admin"))   //signup
 adminRouter.post("/login", login("admin"))    //login
 adminRouter.put("/password",authorize,roleCheck(["admin"]), changePassword)    //changePassword
 adminRouter.get("/send-otp",authorize,roleCheck(["admin"]), otpSend)    //send otp

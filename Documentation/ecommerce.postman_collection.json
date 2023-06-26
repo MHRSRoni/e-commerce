@@ -1,0 +1,376 @@
+{
+	"info": {
+		"_postman_id": "8db95a5e-f4f5-4618-b13c-5a05e377a735",
+		"name": "ecommerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "account",
+			"item": [
+				{
+					"name": "sign up",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"vendor One\",\r\n    \"email\" : \"vendorone@gmail.com\",\r\n    \"password\" : \"12345678\",\r\n    \"contact_no\" : \"01845454545\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/<role>/signup",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"<role>",
+								"signup"
+							]
+						},
+						"description": "# signup\nenter name, email, password and contact_no\n### name\n* type : String\n* min-length : 6\n* max-length : 20\n* allowed : alphabet and space\n* required : true\n\n### email\n* type : String\n* required : true\n\n### password \n* type : String\n* min-length : 8\n* max-length : 18\n* required : true\n\n### contact_no\n* type : String\n* length : 11\n* required : true"
+					},
+					"response": []
+				},
+				{
+					"name": "log in",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"vendorone@gmail.com\",\r\n    \"password\" : \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}//<role>/login",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"",
+								"<role>",
+								"login"
+							]
+						},
+						"description": "# login\nenter your email and password"
+					},
+					"response": []
+				},
+				{
+					"name": "profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendorToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}//<role>/profile",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"",
+								"<role>",
+								"profile"
+							]
+						},
+						"description": "# profile\n#### attach your access_token in authorization header"
+					},
+					"response": []
+				},
+				{
+					"name": "change password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendorToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\" : \"123456789\",\r\n    \"newPassword\" : \"12345678\",\r\n    \"confirmPassword\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}//<role>/change-password",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"",
+								"<role>",
+								"change-password"
+							]
+						},
+						"description": "# change password\n#### attach your access_token in authorization header\n* enter password , newPassword and confirmPassword\n* must enter a new password , cann't use current password in newPassword\n\n* all field required"
+					},
+					"response": []
+				},
+				{
+					"name": "send OTP",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendorToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/<role>/send-otp",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"<role>",
+								"send-otp"
+							]
+						},
+						"description": "# send OTP\n#### attach your access_token in authorization header"
+					},
+					"response": []
+				},
+				{
+					"name": "verify OTP",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendorToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"otp\" : \"1374\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/<role>/verify-otp",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"<role>",
+								"verify-otp"
+							]
+						},
+						"description": "# verify OTP\n#### attach your access_token in authorization header\n* enter your otp"
+					},
+					"response": []
+				},
+				{
+					"name": "reset password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendorToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"newPassword\" : \"1234567890\",\r\n    \"confirmPassword\" : \"1234567890\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/<role>/reset-password",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"<role>",
+								"reset-password"
+							]
+						},
+						"description": "#reset password\n#### attach your access_token in authorization header\n### requirement\n* first send OTP\n* then verify OTP \n* then reset password\n\n### field\n* newPassword\n* confirmPassword"
+					},
+					"response": []
+				},
+				{
+					"name": "delete account",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendorToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/<role>/profile",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"<role>",
+								"profile"
+							]
+						},
+						"description": "# delete account\n#### attach your access_token in authorization header"
+					},
+					"response": []
+				},
+				{
+					"name": "change email",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vendorToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"newEmail\" : \"mdmonir@gmail.com\",\r\n    \"password\" : \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/<role>/change-email",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"<role>",
+								"change-email"
+							]
+						},
+						"description": "# change email\n#### attach your access_token in authorization header\n* enter your newEmail and password"
+					},
+					"response": []
+				}
+			],
+			"description": "# Account\n### Role\n* user\n* vendor\n* admin\n* warehouse\n* customer_care\n* shipper",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "vendorToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDk4MWU5MWViNjYyZTM0MzFjNzljMjEiLCJuYW1lIjoidmVuZG9yIE9uZSIsInJvbGUiOiJ2ZW5kb3IiLCJpYXQiOjE2ODc2OTA5MDEsImV4cCI6MTY4ODI5NTcwMX0.zERyPoGKSw2vyvLPGed6W9vU4uPr0IGsxYadBnr2rS4",
+			"type": "default"
+		},
+		{
+			"key": "userToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDkxZjg3MjZjNDRmMTI5YWU3YWVkMzQiLCJuYW1lIjoidGVzdG9uZSIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTY4NzM1NTE2MiwiZXhwIjoxNjg3OTU5OTYyfQ.oyeVDA1ih0w6c3LiJtfbh288yfNEHTIpVvtMCGqffKA",
+			"type": "default"
+		},
+		{
+			"key": "base",
+			"value": "http://localhost:5000/api/v1",
+			"type": "default"
+		}
+	]
+}

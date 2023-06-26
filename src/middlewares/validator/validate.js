@@ -3,6 +3,8 @@ const userSchema = require("./userSchema");
 const joi = require("joi");
 const vendorSchema = require("./vendorSchema");
 const { address } = require("./validatingSchema");
+const adminSchema = require("./adminSchema");
+const { warehouse } = require("./warehouseSchema");
 
 
 
@@ -11,7 +13,8 @@ const validate = (schemaName) =>{
     schemaName === "userSchema" ?  userSchema : 
     schemaName === "productSchema" ?  productSchema : 
     schemaName === "vendorSchema" ? vendorSchema : 
-    schemaName === "adminSchema" ? vendorSchema : 
+    schemaName === "adminSchema" ? adminSchema :
+    schemaName === "warehouseSchema" ? warehouse : 
     schemaName === "address" ? address : ""
     )
 
